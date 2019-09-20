@@ -1,12 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Helmet } from "react-helmet";
-import MovieList from '../components/MovieList';
+
+import MovieView from '../components/MovieView';
 
 export default class Home extends React.PureComponent {
-  componentDidMount () {
-
-  }
 
   render () {
     return (
@@ -28,12 +26,9 @@ export default class Home extends React.PureComponent {
               <input className="button" type="button" value="Search" />
             </form>
           </section>
+          <MovieView/>
         </div>
       </article>
     );
   }
 }
-
-Home.propTypes = {
-
-};

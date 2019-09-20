@@ -12,9 +12,9 @@ import Home from './containers/Home';
 import Movie from './containers/Movie';
 import NotFound from './containers/NotFound';
 
-const middleware = [ thunk ];
+const middlewares = [thunk];
 
-const store = createStore( reducer, applyMiddleware( ...middleware ) );
+const store = createStore( reducer, applyMiddleware(...middlewares) );
 
 render(
   <Provider store={store}>

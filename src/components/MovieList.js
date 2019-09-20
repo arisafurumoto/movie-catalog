@@ -6,8 +6,7 @@ const MovieList = ( { movies } ) => (
   <ul>
     {movies.map( ( item, index ) =>
       <ListItem key={index} {...item} />
-    )
-    }
+    )}
   </ul>
 )
 
@@ -16,10 +15,10 @@ MovieList.propTypes = {
   error: PropTypes.string,
   movies: PropTypes.arrayOf(
     PropTypes.shape( {
-      id: PropTypes.string.isRequired,
+      id: PropTypes.number.isRequired,
       title: PropTypes.string.isRequired,
       release_date: PropTypes.string.isRequired,
-      vote_average: PropTypes.string.isRequired,
+      vote_average: PropTypes.number.isRequired,
       poster_path: PropTypes.string.isRequired
     } ).isRequired
   ).isRequired

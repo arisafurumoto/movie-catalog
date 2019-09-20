@@ -14,10 +14,10 @@ const ListItem = ({ id, title, release_date, vote_average, poster_path }) => (
 
 ListItem.propTypes = {
   movie: PropTypes.shape({
-    id: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
     release_date: PropTypes.string.isRequired,
-    vote_average: PropTypes.string.isRequired,
+    vote_average: PropTypes.number.isRequired,
     poster_path: PropTypes.string.isRequired
   })
 }

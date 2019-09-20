@@ -1,21 +1,28 @@
-export const GET_MOVIES_REQUEST = 'GET_MOVIES_REQUEST'
-const getMoviesRequest = () => {
+import {
+  LOAD_MOVIES,
+  LOAD_MOVIES_SUCCESS,
+  LOAD_MOVIES_ERROR,
+} from '../constants/actionTypes';
+
+export function loadMovies() {
   return {
-    type: GET_MOVIES_REQUEST
-  }
+    type: LOAD_MOVIES,
+    loading: true,
+  };
 }
 
-export const GET_MOVIES_SUCCESS = 'GET_MOVIES_SUCCESS'
-const getMoviesSuccess = (json) => {  
+export function moviesLoaded(movies) {
   return {
-    type: GET_MOVIES_SUCCESS,
-    posts: json,
-    receivedAt: Date.now()
-  }
+    type: LOAD_MOVIES_SUCCESS,
+    loading: false,
+    movies,
+  };
 }
 
-export const GET_MOVIES_FAILURE = 'GET_MOVIES_FAILURE'
-const getMoviesFailure = (error) => {
-  type: GET_MOVIES_FAILURE,
-  error
+export function moviesLoadingError(error) {
+  return {
+    type: LOAD_MOVIES_ERROR,
+    loading: false,
+    error,
+  };
 }
