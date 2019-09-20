@@ -2,6 +2,7 @@ import {
   LOAD_MOVIES,
   LOAD_MOVIES_SUCCESS,
   LOAD_MOVIES_ERROR,
+  CHANGE_KEYWORD,
 } from '../constants/actionTypes';
 
 // The initial state of the App
@@ -9,6 +10,7 @@ export const initialState = {
   loading: false,
   error: null,
   movies: [],
+  keyword: '',
 };
 
 function appReducer(state = initialState, action) {
@@ -35,6 +37,14 @@ function appReducer(state = initialState, action) {
         error: action.error,
       };
     }
+      
+    case CHANGE_KEYWORD: {
+      return {
+        ...state,
+        loading: false,
+        keyword: action.keyword,
+      };
+    }
     default:
       return state;
   }
@@ -43,5 +53,6 @@ function appReducer(state = initialState, action) {
 export const getMoviesSuccess = (state) => state.movies;
 export const getMoviesLoading = (state) => state.loading;
 export const getMoviesError = ( state ) => state.error;
+export const changeKeyword = ( state ) => state.keyword;
 
-export default appReducer;
+export default appReducer

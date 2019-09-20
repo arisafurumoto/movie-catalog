@@ -1,22 +1,23 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 
-import { getMoviesSuccess, getMoviesLoading, getMoviesError } from '../reducers';
+import { getMoviesSuccess, getMoviesLoading, getMoviesError, changeKeyword } from '../reducers';
 import LoadingSpinner from './LoadingSpinner';
 import MovieList from './MovieList';
 import getMoviesAction from '../middleware/getMovies';
+import { keywordChanged } from '../actions'
 
-class MovieView extends React.PureComponent {
+class MovieView extends Component {
   constructor(props) {
     super(props);
-    this.shouldComponentRender = this.shouldComponentRender.bind(this);
+    this.shouldComponentRender = this.shouldComponentRender.bind( this );
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
   componentDidMount () {
-    const {getMovies} = this.props;
-    getMovies();
+    const { getMovies, keyword } = this.props;
+    getMovies(keyword);
   }
 
   shouldComponentRender() {
@@ -25,15 +26,32 @@ class MovieView extends React.PureComponent {
     return true;
   }
 
+  handleSubmit ( event ) {
+    event.preventDefault();
+    const { getMovies, keyword } = this.props;
+    getMovies(keyword);
+  }
+
   render () {
-    const { loading, error, movies } = this.props;
+    const { loading, error, movies, keyword, onSearch, onChangeKeyword} = this.props;
     if ( !this.shouldComponentRender() ) return <LoadingSpinner />
     
     return (
-      <div className="movies">
-        {error && <span className='movies-error'>{error}</span>}
-        <MovieList movies={movies} />
-      </div>
+      <section>
+        <div className="search">
+          <form onSubmit={this.handleSubmit}>
+            <label className="search-label" htmlFor="search">
+              <span>Search</span>
+            </label>
+            <input id="search" type="text" name="search" value={keyword} onChange={onChangeKeyword}/>
+            <input className="button" type="submit" value="Search" onClick={onSearch} />
+          </form>
+        </div>
+        <div className="movies">
+          {error && <span className='movies-error'>{error}</span>}
+          <MovieList movies={movies} />
+        </div>
+      </section>
     );
   }
 }
@@ -41,12 +59,14 @@ class MovieView extends React.PureComponent {
 const mapStateToProps = (state) => ({
   loading: getMoviesLoading(state),
   error: getMoviesError(state),
-  movies: getMoviesSuccess(state)
+  movies: getMoviesSuccess(state),
+  keyword: changeKeyword(state)
 })
 
-const mapDispatchToProps = (dispatch) => bindActionCreators({
-  getMovies: getMoviesAction
-}, dispatch)
+const mapDispatchToProps = ( dispatch ) => ( {
+  getMovies: (keyword) => dispatch(getMoviesAction(keyword)),
+  onChangeKeyword: (e) => dispatch(keywordChanged(e.target.value))
+} );
 
 export default connect(
   mapStateToProps,
