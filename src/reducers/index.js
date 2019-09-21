@@ -6,6 +6,7 @@ import {
   LOAD_DETAILS_SUCCESS,
   LOAD_DETAILS_ERROR,
   CHANGE_KEYWORD,
+  SEARCHED,
 } from '../constants/actionTypes';
 
 // The initial state of the App
@@ -15,6 +16,7 @@ export const initialState = {
   movies: [],
   details: {},
   keyword: '',
+  searched: '',
 };
 
 function appReducer(state = initialState, action) {
@@ -72,6 +74,14 @@ function appReducer(state = initialState, action) {
         keyword: action.keyword,
       };
     }
+      
+    case SEARCHED: {
+      return {
+        ...state,
+        searched: action.searched,
+      };
+    }
+      
     default:
       return state;
   }
@@ -84,5 +94,6 @@ export const getDetailsSuccess = (state) => state.details;
 export const getDetailsLoading = (state) => state.loading;
 export const getDetailsError = ( state ) => state.error;
 export const changeKeyword = ( state ) => state.keyword;
+export const useSearch = ( state ) => state.searched;
 
 export default appReducer

@@ -1,0 +1,40 @@
+.home{
+  background: radial-gradient(800px at top, #063852 0%,#081b23 60%);
+
+  @media(max-width:40.5625em){
+    background: radial-gradient(400px at top, #063852 0%,#081b23 60%);
+  }
+}
+
+.logo{
+  display:block;
+  margin:0 auto;
+  padding:120px 0 180px;
+  width:180px;
+
+  @media(max-width:64em) and (min-width:40.5626em){
+    width:150px;
+  }
+
+  @media(max-width:40.5625em){
+    padding:60px 0 100px;
+    width:66px;
+  }
+
+  &-wrap{
+    background-image: url("/assets/images/bg.svg");
+    background-size: auto 110%;
+    background-repeat: no-repeat;
+    background-position: center -60px;
+
+    @media(max-width:64em) and (min-width:40.5626em){
+      background-size: auto 100%;
+      background-position: center -50px;
+    }
+
+    @media(max-width:40.5625em){
+      background-size: auto 100%;
+      background-position: center -30px;
+    }
+  }
+}

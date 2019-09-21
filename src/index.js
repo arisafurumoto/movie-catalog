@@ -12,6 +12,8 @@ import Home from './containers/Home';
 import Movie from './containers/Movie';
 import NotFound from './containers/NotFound';
 
+import './styles.scss';
+
 const middlewares = [thunk];
 
 const store = createStore( reducer, applyMiddleware(...middlewares) );

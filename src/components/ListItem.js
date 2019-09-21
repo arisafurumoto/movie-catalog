@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Poster from './Poster';
 
 export default class ListItem extends Component {
   render () {
@@ -8,14 +9,19 @@ export default class ListItem extends Component {
     release = months[parseInt(release.slice(5, 7)) - 1] + ' ' + release.slice(0, 4);
     let score = vote_average;
     score = score * 10;
+    let scoreRank = 'high';
+    if ( score < 70 && score >= 50 ) scoreRank = 'medium';
+    if ( score < 50 ) scoreRank = 'low';
 
     return (
-      <li className="movie-list-item">
-        <a className="movie-list-item-link" href={`/movie/${id}`}>
-          <img className="movie-list-item__poster" src={`https://image.tmdb.org/t/p/w185_and_h278_bestv2${ poster_path }`} alt={title} />
-          <span className="movie-list-item__title">{title}</span>
-          <span className="movie-list-item__date">{release}</span>
-          <span className="movie-list-item__score">{score}%</span>
+      <li className="movies-list-item">
+        <a className="movies-list-item-link" href={`/movie/${ id }`}>
+          <div className="movies-list-item__poster-wrap">
+            <Poster path={poster_path} title={title}/>
+          </div>
+          <span className="movies-list-item__title">{title}</span>
+          <span className="movies-list-item__date">{release}</span>
+          <span className={`movies-list-item__score ${scoreRank}`}>{score}%</span>
         </a>
       </li>
     );

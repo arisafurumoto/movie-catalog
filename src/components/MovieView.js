@@ -3,27 +3,22 @@ import PropTypes from 'prop-types';
 
 import { connect } from 'react-redux';
 
-import { getMoviesSuccess, getMoviesLoading, getMoviesError, changeKeyword } from '../reducers';
-import LoadingSpinner from './LoadingSpinner';
+import { getMoviesSuccess, getMoviesLoading, getMoviesError, changeKeyword, useSearch } from '../reducers';
 import MovieList from './MovieList';
+import Title from './Title';
 import getMoviesAction from '../middleware/getMovies';
 import { keywordChanged } from '../actions'
+import "./MovieView.scss"
+import "./Search.scss"
 
 class MovieView extends Component {
   constructor(props) {
     super(props);
-    this.shouldComponentRender = this.shouldComponentRender.bind( this );
     this.handleSubmit = this.handleSubmit.bind(this);
   }
   componentDidMount () {
     const { getMovies, keyword } = this.props;
     getMovies(keyword);
-  }
-
-  shouldComponentRender() {
-    const {loading} = this.props;
-    if(this.loading === false) return false;
-    return true;
   }
 
   handleSubmit ( event ) {
@@ -33,14 +28,12 @@ class MovieView extends Component {
   }
 
   render () {
-    const { loading, error, movies, keyword, onSearch, onChangeKeyword} = this.props;
-    if ( !this.shouldComponentRender() ) return <LoadingSpinner />
-    
+    const { loading, error, movies, keyword, searched, onSearch, onChangeKeyword} = this.props;
     return (
-      <section>
+      <section className="home-content">
         <div className="search">
           <form onSubmit={this.handleSubmit}>
-            <label className="search-label" htmlFor="search">
+            <label className="search-label visually-hidden" htmlFor="search">
               <span>Search</span>
             </label>
             <input id="search" type="text" name="search" placeholder="Search" value={keyword} onChange={onChangeKeyword}/>
@@ -48,8 +41,9 @@ class MovieView extends Component {
           </form>
         </div>
         <div className="movies">
+          <Title searched={searched}/>
           {error && <span className='movies-error'>{error}</span>}
-          <MovieList movies={movies} />
+          <MovieList movies={movies} loading={loading} />
         </div>
       </section>
     );
@@ -60,7 +54,8 @@ const mapStateToProps = (state) => ({
   loading: getMoviesLoading(state),
   error: getMoviesError(state),
   movies: getMoviesSuccess(state),
-  keyword: changeKeyword(state)
+  keyword: changeKeyword( state ),
+  searched: useSearch(state),
 })
 
 const mapDispatchToProps = ( dispatch ) => ( {

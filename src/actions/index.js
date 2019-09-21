@@ -6,6 +6,7 @@ import {
   LOAD_DETAILS_SUCCESS,
   LOAD_DETAILS_ERROR,
   CHANGE_KEYWORD,
+  SEARCHED
 } from '../constants/actionTypes';
 
 export function loadMovies() {
@@ -59,5 +60,12 @@ export function keywordChanged ( keyword ) {
     type: CHANGE_KEYWORD,
     loading: false,
     keyword,
+  };
+}
+
+export function searched ( searched ) {
+  return {
+    type: SEARCHED,
+    searched,
   };
 }
