@@ -27,7 +27,6 @@ render(
         <Route path="" component={NotFound} />
       </Switch>
     </BrowserRouter>
-
   </Provider>,
   document.getElementById( 'app' )
 )

@@ -1,9 +1,7 @@
 const path = require( 'path' );
 const webpack = require( "webpack" );
 const HtmlWebpackPlugin = require( 'html-webpack-plugin' );
-const CopyPlugin = require('copy-webpack-plugin');
-
-const environment = process.env.NODE_ENV || 'development';
+const CopyPlugin = require( 'copy-webpack-plugin' );
 
 module.exports = {
   mode: 'development',
@@ -89,9 +87,6 @@ module.exports = {
     new CopyPlugin( [
       { from: 'src/assets', to: 'assets' },
     ]),
-    new webpack.DefinePlugin( {
-      'process.env.NODE_ENV': JSON.stringify( environment )
-    } ),
     new webpack.HotModuleReplacementPlugin()
   ]
 }

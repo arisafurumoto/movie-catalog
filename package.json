@@ -4,8 +4,8 @@
   "description": "A react + redux movie catalog.",
   "main": "index.html",
   "scripts": {
-    "prod": "export NODE_ENV=production && webpack",
-    "build": "export NODE_ENV=development && webpack-dev-server --devtool eval --progress --colors --content-base dist",
+    "prod": "webpack --config webpack.prod.config.js",
+    "build": "webpack-dev-server --config webpack.dev.config.js --devtool eval --progress --colors --content-base dist",
     "clean": "rimraf ./dist",
     "eslint:fix": "eslint src --fix",
     "eslint": "eslint src",

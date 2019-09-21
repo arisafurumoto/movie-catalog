@@ -1,1 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 31.25" x="0px" y="0px"><g data-name="Action Expand"><path d="M12.15,19.85l-7-7a.48.48,0,0,1,0-.7l7-7,.7.7L6.21,12.5l6.64,6.65Z"/><rect x="5.5" y="12" width="14" height="1"/></g></svg>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 18 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M8.67912748,0 L10.3981689,1.52803683 L4.099,8.614 L17.5386482,8.61401841 L17.5386482,10.9140184 L4.099,10.914 L10.3981689,18 L8.67912748,19.5280368 L-2.84217094e-14,9.76401841 L8.67912748,0 Z" id="Combined-Shape" fill="#FFFFFF" fill-rule="nonzero"></path>
+    </g>
+</svg>
