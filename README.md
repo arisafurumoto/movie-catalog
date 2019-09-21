@@ -7,7 +7,6 @@
 - _NPM_
 - _Babel_
 - _Webpack_
-- _Cypress_
 - _ESLint_
 - _SCSS_
 
@@ -16,7 +15,7 @@
 1. Clone this repo using `git clone `
 2. Move to the appropriate directory: `cd movie-catalog`.<br />
 3. Run `npm i` to install dependencies.<br />
-4. Run `npm develop` to see the example app at `http://localhost:3000`.
+4. Run `npm dev` to see the example app at `http://localhost:3000`.
 
 ## License
 
