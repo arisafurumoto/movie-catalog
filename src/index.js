@@ -21,9 +21,8 @@ render(
     <BrowserRouter>
       <Switch>
         <Route exact path="/" component={Home} />
-        {/* <Route path="/movie/:movieId" component={Movie} />
+        <Route path="/movie/:movieId" component={Movie} />
         <Route path="" component={NotFound} />
-        */}
       </Switch>
     </BrowserRouter>
 

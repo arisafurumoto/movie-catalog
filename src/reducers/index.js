@@ -2,6 +2,9 @@ import {
   LOAD_MOVIES,
   LOAD_MOVIES_SUCCESS,
   LOAD_MOVIES_ERROR,
+  LOAD_DETAILS,
+  LOAD_DETAILS_SUCCESS,
+  LOAD_DETAILS_ERROR,
   CHANGE_KEYWORD,
 } from '../constants/actionTypes';
 
@@ -10,6 +13,7 @@ export const initialState = {
   loading: false,
   error: null,
   movies: [],
+  details: {},
   keyword: '',
 };
 
@@ -38,6 +42,29 @@ function appReducer(state = initialState, action) {
       };
     }
       
+    case LOAD_DETAILS: {
+      return {
+        ...state,
+        loading: true,
+      }
+    }
+    case LOAD_DETAILS_SUCCESS: {
+      return {
+        ...state,
+        loading: false,
+        error: null,
+        details: action.details,
+      }
+    }
+
+    case LOAD_DETAILS_ERROR: {
+      return {
+        ...state,
+        loading: false,
+        error: action.error,
+      };
+    }
+      
     case CHANGE_KEYWORD: {
       return {
         ...state,
@@ -53,6 +80,9 @@ function appReducer(state = initialState, action) {
 export const getMoviesSuccess = (state) => state.movies;
 export const getMoviesLoading = (state) => state.loading;
 export const getMoviesError = ( state ) => state.error;
+export const getDetailsSuccess = (state) => state.details;
+export const getDetailsLoading = (state) => state.loading;
+export const getDetailsError = ( state ) => state.error;
 export const changeKeyword = ( state ) => state.keyword;
 
 export default appReducer

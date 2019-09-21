@@ -43,7 +43,7 @@ class MovieView extends Component {
             <label className="search-label" htmlFor="search">
               <span>Search</span>
             </label>
-            <input id="search" type="text" name="search" value={keyword} onChange={onChangeKeyword}/>
+            <input id="search" type="text" name="search" placeholder="Search" value={keyword} onChange={onChangeKeyword}/>
             <input className="button" type="submit" value="Search" onClick={onSearch} />
           </form>
         </div>
