@@ -5,9 +5,9 @@ function getMovies (keyword) {
     dispatch( loadMovies() );
     var requestURL = '';
     if ( keyword ) {
-      requestURL = `https://api.themoviedb.org/3/search/movie?api_key=6ed12e064b90ae1290fa326ce9e790ff&sort_by=popularity.desc&language=en-US&query=${ keyword }`;
+      requestURL = `https://api.themoviedb.org/3/search/movie?api_key=25f59a952337b8cf24ca5e2427f109ea&sort_by=popularity.desc&language=en-US&query=${ keyword }`;
     } else {
-      requestURL = `https://api.themoviedb.org/3/discover/movie?api_key=6ed12e064b90ae1290fa326ce9e790ff&sort_by=popularity.desc&language=en-US`;
+      requestURL = `https://api.themoviedb.org/3/discover/movie?api_key=25f59a952337b8cf24ca5e2427f109ea&sort_by=popularity.desc&language=en-US`;
     }
     fetch( requestURL )
       .then( (res) => res.json() )
